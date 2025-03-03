@@ -22,4 +22,8 @@ export class EmployeeService {
     console.log(data)
     return this.http.post(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/CreateEmployee`,data);
   }
+
+  GellAllEmployee() {
+    return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetEmployees`)
+  }
 }
