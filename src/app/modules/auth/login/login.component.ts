@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,33 +13,28 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    // private loginSrv: AuthServiceService,
+    private authSrv: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: new FormControl('',[Validators.required, Validators.email]),
+      emailId: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     })
   }
 
   login() {
     const LoginData = this.loginForm.value;
-    if(LoginData.email == 'g@gmail.com' && LoginData.password == 'g@123') {
-      this.router.navigate(['/dashboard']);
-      sessionStorage.setItem('user',LoginData.email)
-    } else {
-      alert('Wrong Credentials');
-      this.loginForm.reset()
-    }
-    console.log(this.loginForm.value);
-    // this.loginSrv.login(this.loginForm.controls['email'].value,this.loginForm.controls['password'].value).subscribe((res) => {
-    //   if(res.length) {
-    //     this.router.navigate(['/layout'])
-    //   } else {
-    //     this.loginForm.reset()
-    //   }
-    // })
+    this.authSrv.LoginEmployee(LoginData).subscribe((LogRes: any) => {
+      if (LogRes.result) {
+        this.router.navigate(['/dashboard']);
+        sessionStorage.setItem('Employee', JSON.stringify(LogRes.data))
+      } else {
+        alert('Wrong Credentials');
+        this.loginForm.reset()
+      }
+      console.log(LogRes)
+    })
   }
 }

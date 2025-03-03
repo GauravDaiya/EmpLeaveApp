@@ -17,6 +17,8 @@ export class EmployeeService {
     private http: HttpClient,
   ) { }
 
+  
+
   GetAllRoles() {
     return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetAllRoles`);
   }
