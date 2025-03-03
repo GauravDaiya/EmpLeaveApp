@@ -20,34 +20,34 @@ export class EmployeeService {
   
 
   GetAllRoles() {
-    return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetAllRoles`);
+    return this.http.get(`https://cors-anywhere.herokuapp.com/https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetAllRoles`);
   }
 
   GetAllDepartments() {
-    return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetDepartments`);
+    return this.http.get(`https://cors-anywhere.herokuapp.com/https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetDepartments`);
   }
 
   CreateNewEmp(data:any) {
-    return this.http.post(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/CreateEmployee`,data);
+    return this.http.post(`https://cors-anywhere.herokuapp.com/https://freeapi.miniprojectideas.com/api/EmployeeLeave/CreateEmployee`,data);
   }
 
   UpdateEmployee(data:any) {
     console.log(data)
-    return this.http.put(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/UpdateEmployee`,data)
+    return this.http.put(`https://cors-anywhere.herokuapp.com/https://freeapi.miniprojectideas.com/api/EmployeeLeave/UpdateEmployee`,data)
   }
 
   GellAllEmployee() {
-    return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetEmployees`)
+    return this.http.get(`https://cors-anywhere.herokuapp.com/https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetEmployees`)
   }
 
   GetEmployeeById(Empid:number) {
-    return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetEmployeeById`, {
+    return this.http.get(`https://cors-anywhere.herokuapp.com/https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetEmployeeById`, {
       params: {id: Empid}
     })
   }
 
   DeleteEmployee(Empid: number) {
-    return this.http.delete(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/DeleteEmployee`, {
+    return this.http.delete(`https://cors-anywhere.herokuapp.com/https://freeapi.miniprojectideas.com/api/EmployeeLeave/DeleteEmployee`, {
       params: { id: Empid}
     });
   }
