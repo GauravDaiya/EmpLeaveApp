@@ -9,6 +9,6 @@ export class AuthService {
   constructor(private http: HttpClient,) { }
 
   LoginEmployee(data:any) {
-    return this.http.post(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/Login`,data)
+    return this.http.post(`https://cors-anywhere.herokuapp.com/https://freeapi.miniprojectideas.com/api/EmployeeLeave/Login`,data)
   }
 }
