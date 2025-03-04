@@ -42,8 +42,8 @@
                             }} </td>
                     </ng-container>
 
-                     <!-- details Column -->
-                     <ng-container matColumnDef="details">
+                    <!-- details Column -->
+                    <ng-container matColumnDef="details">
                         <th mat-header-cell *matHeaderCellDef> Details </th>
                         <td mat-cell *matCellDef="let element"> {{element.details
                             }} </td>
@@ -56,11 +56,14 @@
                             }} </td>
                     </ng-container>
 
-                     <!-- isApproved Column -->
-                     <ng-container matColumnDef="isApproved">
+                    <!-- isApproved Column -->
+                    <ng-container matColumnDef="isApproved">
                         <th mat-header-cell *matHeaderCellDef> Approval Status </th>
-                        <td mat-cell *matCellDef="let element"> {{element.isApproved
-                            }} </td>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-button *ngIf="element.isApproved === null" color="warn">Pending</button>
+                            <button mat-button *ngIf="element.isApproved === true" color="primary">Approved</button>
+                            <button mat-button *ngIf="element.isApproved === false" color="accent">Rejected</button>
+                        </td>
                     </ng-container>
 
                     <!-- Action Column
