@@ -1,0 +1,87 @@
+<div class="col-12 my-3">
+    <h3 class="m-2">Leaves Data:</h3>
+    <div class="row">
+        <div class="col-11 my-3 mx-auto">
+            <section class="example-container mat-elevation-z8" tabindex="0">
+                <table mat-table [dataSource]="dataSource">
+
+                    <!-- Serial Number (S.N.) Column -->
+                    <ng-container matColumnDef="sn">
+                        <th mat-header-cell *matHeaderCellDef> S.N. </th>
+                        <td mat-cell *matCellDef="let element; let i = index"> {{ i + 1 }} </td>
+                    </ng-container>
+
+                    <!-- employeeName Column -->
+                    <ng-container matColumnDef="employeeName">
+                        <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
+                    </ng-container>
+
+                    <!-- fromDate Column -->
+                    <ng-container matColumnDef="fromDate">
+                        <th mat-header-cell *matHeaderCellDef> From Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.fromDate}} </td>
+                    </ng-container>
+
+                    <!-- toDate Column -->
+                    <ng-container matColumnDef="toDate">
+                        <th mat-header-cell *matHeaderCellDef> To Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.toDate}} </td>
+                    </ng-container>
+
+                    <!-- noOfDays Column -->
+                    <ng-container matColumnDef="noOfDays">
+                        <th mat-header-cell *matHeaderCellDef> Number of Days </th>
+                        <td mat-cell *matCellDef="let element"> {{element.noOfDays}} </td>
+                    </ng-container>
+
+                    <!-- leaveType Column -->
+                    <ng-container matColumnDef="leaveType">
+                        <th mat-header-cell *matHeaderCellDef> Leave Type </th>
+                        <td mat-cell *matCellDef="let element"> {{element.leaveType
+                            }} </td>
+                    </ng-container>
+
+                     <!-- details Column -->
+                     <ng-container matColumnDef="details">
+                        <th mat-header-cell *matHeaderCellDef> Details </th>
+                        <td mat-cell *matCellDef="let element"> {{element.details
+                            }} </td>
+                    </ng-container>
+
+                    <!-- approvedDate Column -->
+                    <ng-container matColumnDef="approvedDate">
+                        <th mat-header-cell *matHeaderCellDef> Approval Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.approvedDate
+                            }} </td>
+                    </ng-container>
+
+                     <!-- isApproved Column -->
+                     <ng-container matColumnDef="isApproved">
+                        <th mat-header-cell *matHeaderCellDef> Approval Status </th>
+                        <td mat-cell *matCellDef="let element"> {{element.isApproved
+                            }} </td>
+                    </ng-container>
+
+                    <!-- Action Column
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef> Actions </th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-icon-button color="primary" (click)="onEdit(element.employeeId)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn" (click)="onDelete(element.employeeId)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container> -->
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+
+</div>

@@ -34,7 +34,6 @@ export class LoginComponent {
         alert('Wrong Credentials');
         this.loginForm.reset()
       }
-      console.log(LogRes)
     })
   }
 }

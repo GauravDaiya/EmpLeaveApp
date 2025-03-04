@@ -1,0 +1,46 @@
+<form [formGroup]="LeaveForm" class="col-12 my-3" (ngSubmit)="submitForm()">
+    <h4 class="m-2">Add Leave:</h4>
+    <div class="row justify-content-start my-3 mx-0 flex-wrap">
+        <div class="col-4 mx-3">
+            <mat-form-field class="w-100">
+                <mat-label>Emploee Name</mat-label>
+                <mat-select formControlName="employeeId">
+                    @for (Emp of AllEmployeeData; track Emp) {
+                    <mat-option [value]="Emp.employeeId">{{Emp.employeeName}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-4 mx-3">
+            <mat-form-field class="w-100">
+                <mat-label>Choose From date</mat-label>
+                <input matInput formControlName="fromDate" [matDatepicker]="picker1">
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-3 mx-3">
+            <mat-form-field class="w-100">
+                <mat-label>Choose To date</mat-label>
+                <input matInput formControlName="toDate" [matDatepicker]="picker2" [matDatepickerFilter]="disableToDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-3 mx-3">
+            <mat-form-field class="w-100">
+                <mat-label>Enter Leave Type</mat-label>
+                <input matInput formControlName="leaveType">
+            </mat-form-field>
+        </div>
+        <div class="col-3 mx-3">
+            <mat-form-field class="w-100">
+                <mat-label>Enter Details</mat-label>
+                <textarea matInput formControlName="details"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="my-2">
+            <button class="my-3" mat-stroked-button>Create Leave</button>
+        </div>
+    </div>
+</form>

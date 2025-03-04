@@ -50,9 +50,8 @@ export class CreateEmployeeComponent implements OnInit, OnDestroy {
         this.EditEmployeeData = editEmpRes;
         this.employeeForm.patchValue({
           ...this.EditEmployeeData,
-          gender: this.EditEmployeeData.gender.toLowerCase()  // Ensure lowercase match
+          gender: this.EditEmployeeData.gender.toLowerCase() 
         });
-        console.log('Patched Employee Data:', this.EditEmployeeData);
       }
     });
 
@@ -68,7 +67,6 @@ export class CreateEmployeeComponent implements OnInit, OnDestroy {
     if (this.employeeForm.valid) {
       if (this.isEditMode) {
         const EditEmpData = { ...this.employeeForm.value, employeeId: this.EditEmployeeData.employeeId };
-        console.log(EditEmpData);
         this.empSrv.UpdateEmployee(EditEmpData).subscribe((UpdRes: any) => {
           this.router.navigate(['/dashboard/view-employee'])
         })
