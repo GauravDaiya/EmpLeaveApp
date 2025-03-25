@@ -13,7 +13,7 @@ export class EmployeeService {
   private employeeToEdit = new BehaviorSubject<any>(null); 
   public employeeToEdit$ = this.employeeToEdit.asObservable();
 
-  private apiUrl = "https://empleaveappnode.onrender.com";
+  private apiUrl = "https://empleaveappnode.onrender.com/api/v1/user";
 
   constructor(
     private http: HttpClient,
