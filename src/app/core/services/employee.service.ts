@@ -17,46 +17,42 @@ export class EmployeeService {
     private http: HttpClient,
   ) { }
 
-  GetAllRoles() {
-    return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetAllRoles`);
-  }
+  // GetAllRoles() {
+  //   return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetAllRoles`);
+  // }
 
-  GetAllDepartments() {
-    return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetDepartments`);
-  }
+  // GetAllDepartments() {
+  //   return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetDepartments`);
+  // }
 
   CreateNewEmp(data:any) {
-    return this.http.post(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/CreateEmployee`,data);
+    return this.http.post(`http://localhost:5000/api/v1/user/CreateEmployee`,data);
   }
 
-  UpdateEmployee(data:any) {
+  UpdateEmployee(editId:any,data:any) {
     console.log(data)
-    return this.http.put(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/UpdateEmployee`,data)
+    return this.http.patch(`http://localhost:5000/api/v1/user/UpdateEmp/${editId}`,data)
   }
 
   GellAllEmployee() {
-    return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetEmployees`)
+    return this.http.get(`http://localhost:5000/api/v1/user/GetAllEmployees`)
   }
 
-  GetEmployeeById(Empid:number) {
-    return this.http.get(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/GetEmployeeById`, {
-      params: {id: Empid}
-    })
+  GetEmployeeById(Empid:any) {
+    return this.http.get(`http://localhost:5000/api/v1/user/GetEmpById/${Empid}`)
   }
 
-  DeleteEmployee(Empid: number) {
-    return this.http.delete(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/DeleteEmployee`, {
-      params: { id: Empid}
-    });
+  DeleteEmployee(Empid: any) {
+    return this.http.delete(`http://localhost:5000/api/v1/user/DeleteEmployee/${Empid}`);
   }
 
   ActiveEmployeeEditMode() {
     this.isEditMode.next(true)
   }
 
-  setEmployeeToEdit(empId: number) {
+  setEmployeeToEdit(empId: any) {
     this.GetEmployeeById(empId).subscribe((res:any) => {
-      this.employeeToEdit.next(res.data)
+      this.employeeToEdit.next(res.data.EmpById)
     })
   }
 

@@ -19,8 +19,12 @@ export class ViewEmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getAllEmp();
+  }
+
+  getAllEmp = () => {
     this.empSrv.GellAllEmployee().subscribe((EmpRes: any) => {
-      this.AllEmployeeData = EmpRes.data;
+      this.AllEmployeeData = EmpRes.data.AllEmployees;
       this.dataSource.data = this.AllEmployeeData;
     })
   }
@@ -30,10 +34,11 @@ export class ViewEmployeeComponent implements OnInit {
   onDelete(empId: number) {
     this.empSrv.DeleteEmployee(empId).subscribe((EmpDelRes: any) => {
       alert(EmpDelRes.message);
+      this.getAllEmp()
     })
   }
 
-  onEdit(empId: number) {
+  onEdit(empId: any) {
     this.empSrv.ActiveEmployeeEditMode();
     this.empSrv.setEmployeeToEdit(empId); 
     this.router.navigate(['/dashboard/create-employee'])

@@ -41,9 +41,9 @@
         <div class="col-3 mx-3">
             <mat-form-field class="w-100">
                 <mat-label>Emploee Department</mat-label>
-                <mat-select formControlName="deptId">
+                <mat-select formControlName="deptName">
                     @for (Depart of DepartmentData; track Depart) {
-                    <mat-option [value]="Depart.deptId">{{Depart.deptName}}</mat-option>
+                    <mat-option [value]="Depart ">{{Depart}}</mat-option>
                     }
                 </mat-select>
             </mat-form-field>

@@ -17,8 +17,8 @@ export class CreateEmployeeComponent implements OnInit, OnDestroy {
   }
 
   employeeForm!: FormGroup;
-  public RolesData!: any[];
-  public DepartmentData!: any[];
+  public RolesData: any[] = ['Employee', 'Amin Department Employee', 'Department Head'];
+  public DepartmentData: any[] = ['IT', 'Infra', 'Management'];
   public isEditMode!: boolean;
   public EditEmployeeData: any = null;
 
@@ -31,7 +31,7 @@ export class CreateEmployeeComponent implements OnInit, OnDestroy {
       employeeName: ['', Validators.required],
       contactNo: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       emailId: ['', [Validators.required, Validators.email]],
-      deptId: ['', [Validators.required]],
+      deptName: ['', [Validators.required]],
       password: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       role: ['', [Validators.required]]
@@ -52,22 +52,24 @@ export class CreateEmployeeComponent implements OnInit, OnDestroy {
           ...this.EditEmployeeData,
           gender: this.EditEmployeeData.gender.toLowerCase() 
         });
+        console.log(this.EditEmployeeData)
       }
     });
+    
 
-    this.empSrv.GetAllRoles().subscribe((RolesRes: any) => {
-      this.RolesData = RolesRes.data;
-    });
-    this.empSrv.GetAllDepartments().subscribe((DepartRes: any) => {
-      this.DepartmentData = DepartRes.data;
-    })
+    // this.empSrv.GetAllRoles().subscribe((RolesRes: any) => {
+    //   this.RolesData = RolesRes.data;
+    // });
+    // this.empSrv.GetAllDepartments().subscribe((DepartRes: any) => {
+    //   this.DepartmentData = DepartRes.data;
+    // })
   }
 
   submitForm() {
     if (this.employeeForm.valid) {
       if (this.isEditMode) {
-        const EditEmpData = { ...this.employeeForm.value, employeeId: this.EditEmployeeData.employeeId };
-        this.empSrv.UpdateEmployee(EditEmpData).subscribe((UpdRes: any) => {
+        const EditEmpData = { ...this.employeeForm.value};
+        this.empSrv.UpdateEmployee(this.EditEmployeeData._id,EditEmpData).subscribe((UpdRes: any) => {
           this.router.navigate(['/dashboard/view-employee'])
         })
       } else {

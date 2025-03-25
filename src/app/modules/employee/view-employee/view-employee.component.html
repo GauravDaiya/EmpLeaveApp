@@ -16,7 +16,7 @@
                     <!-- empId Column -->
                     <ng-container matColumnDef="empId">
                         <th mat-header-cell *matHeaderCellDef> ID. </th>
-                        <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
                     </ng-container>
 
                     <!-- empName Column -->
@@ -54,10 +54,10 @@
                     <ng-container matColumnDef="actions">
                         <th mat-header-cell *matHeaderCellDef> Actions </th>
                         <td mat-cell *matCellDef="let element">
-                            <button mat-icon-button color="primary" (click)="onEdit(element.employeeId)">
+                            <button mat-icon-button color="primary" (click)="onEdit(element._id)">
                                 <mat-icon>edit</mat-icon>
                             </button>
-                            <button mat-icon-button color="warn" (click)="onDelete(element.employeeId)">
+                            <button mat-icon-button color="warn" (click)="onDelete(element._id)">
                                 <mat-icon>delete</mat-icon>
                             </button>
                         </td>

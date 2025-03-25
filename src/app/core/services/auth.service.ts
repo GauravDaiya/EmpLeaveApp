@@ -9,6 +9,10 @@ export class AuthService {
   constructor(private http: HttpClient,) { }
 
   LoginEmployee(data:any) {
-    return this.http.post(`https://freeapi.miniprojectideas.com/api/EmployeeLeave/Login`,data)
+    return this.http.post(
+      `http://localhost:5000/api/v1/user/login`, 
+      data,
+      { headers: { 'Content-Type': 'application/json' } }
+    );
   }
 }

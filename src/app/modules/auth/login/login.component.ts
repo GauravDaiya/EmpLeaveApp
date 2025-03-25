@@ -26,14 +26,26 @@ export class LoginComponent {
 
   login() {
     const LoginData = this.loginForm.value;
-    this.authSrv.LoginEmployee(LoginData).subscribe((LogRes: any) => {
-      if (LogRes.result) {
-        this.router.navigate(['/dashboard']);
-        sessionStorage.setItem('Employee', JSON.stringify(LogRes.data))
-      } else {
-        alert('Wrong Credentials');
-        this.loginForm.reset()
+    const LoginFinalData = {
+      userEmail: LoginData.emailId,
+      userPassword: LoginData.password
+    }
+    this.authSrv.LoginEmployee(LoginFinalData).subscribe({
+      next: (LogRes: any) => {
+        console.log(LogRes);
+        if (LogRes.status === 'Success') {
+          this.router.navigate(['/dashboard']);
+          sessionStorage.setItem('Employee', JSON.stringify(LogRes.data));
+        } else {
+          alert('Wrong Credentials');
+          this.loginForm.reset();
+        }
+      },
+      error: (err) => {
+        console.log("Error:", err);
+        alert(err.error.data?.message || "Invalid credentials"); // ✅ Show correct error
+        this.loginForm.reset();
       }
-    })
+    });
   }
 }
