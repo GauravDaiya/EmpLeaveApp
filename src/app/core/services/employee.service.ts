@@ -28,7 +28,7 @@ export class EmployeeService {
   // }
 
   CreateNewEmp(data:any) {
-    return this.http.post(`http://localhost:5000/api/v1/user/CreateEmployee`,data);
+    return this.http.post(`${this.apiUrl}/CreateEmployee`,data);
   }
 
   UpdateEmployee(editId:any,data:any) {
