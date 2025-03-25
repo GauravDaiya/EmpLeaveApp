@@ -6,11 +6,15 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
+  private apiUrl = "https://empleaveappnode.onrender.com";
+
   constructor(private http: HttpClient,) { }
+
+  
 
   LoginEmployee(data:any) {
     return this.http.post(
-      `http://localhost:5000/api/v1/user/login`, 
+      `${this.apiUrl}/login`, 
       data,
       { headers: { 'Content-Type': 'application/json' } }
     );

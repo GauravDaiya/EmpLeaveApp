@@ -13,6 +13,8 @@ export class EmployeeService {
   private employeeToEdit = new BehaviorSubject<any>(null); 
   public employeeToEdit$ = this.employeeToEdit.asObservable();
 
+  private apiUrl = "https://empleaveappnode.onrender.com";
+
   constructor(
     private http: HttpClient,
   ) { }
@@ -31,19 +33,19 @@ export class EmployeeService {
 
   UpdateEmployee(editId:any,data:any) {
     console.log(data)
-    return this.http.patch(`http://localhost:5000/api/v1/user/UpdateEmp/${editId}`,data)
+    return this.http.patch(`${this.apiUrl}/UpdateEmp/${editId}`,data)
   }
 
   GellAllEmployee() {
-    return this.http.get(`http://localhost:5000/api/v1/user/GetAllEmployees`)
+    return this.http.get(`${this.apiUrl}/GetAllEmployees`)
   }
 
   GetEmployeeById(Empid:any) {
-    return this.http.get(`http://localhost:5000/api/v1/user/GetEmpById/${Empid}`)
+    return this.http.get(`${this.apiUrl}/GetEmpById/${Empid}`)
   }
 
   DeleteEmployee(Empid: any) {
-    return this.http.delete(`http://localhost:5000/api/v1/user/DeleteEmployee/${Empid}`);
+    return this.http.delete(`${this.apiUrl}/DeleteEmployee/${Empid}`);
   }
 
   ActiveEmployeeEditMode() {
